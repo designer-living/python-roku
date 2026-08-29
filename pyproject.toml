@@ -1,11 +1,12 @@
 [project]
-name = "roku"
+name = "pyroku-ng"
 version = "5.0"
-description = "Client for the Roku media player"
+description = "Client for the Roku media player (python-roku fork published to PyPI, with keyup/keydown support)"
 readme = "README.md"
 license = "BSD-3-Clause"
 authors = [
     { name = "Jeremy Carbaugh", email = "jeremy@jcarbaugh.com" },
+    { name = "Neil Renaud" },
 ]
 requires-python = ">=3.10"
 dependencies = [
@@ -30,10 +31,11 @@ async = ["aiohttp>=3.9,<4"]
 cli = ["click>=8,<9"]
 
 [project.scripts]
-roku = "roku.cli:cli"
+pyroku-ng = "roku.cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/jcarbaugh/python-roku"
+Homepage = "https://github.com/designer-living/python-roku"
+Upstream = "https://github.com/jcarbaugh/python-roku"
 
 [dependency-groups]
 dev = [
@@ -52,3 +54,9 @@ asyncio_mode = "auto"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["roku"]
+
+[tool.hatch.build.targets.sdist]
+include = ["roku", "README.md", "LICENSE", "CONTRIBUTORS.md"]
